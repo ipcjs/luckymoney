@@ -16,19 +16,16 @@ android {
     compileSdkVersion 19
     buildToolsVersion "21.1.2"
 
-      lintOptions {
-          abortOnError false
-      }
-
+    lintOptions {
+        abortOnError false
+    }
     productFlavors {
-	dashi {
-			packageName='com.dashiweiwu.dashi'
-	}
-	gaoning {
-			packageName='com.dashiweiwu.gaoning'
-	}
-	
-
+        dashi {
+            applicationId 'com.dashiweiwu.dashi'
+        }
+        gaoning {
+            applicationId 'com.dashiweiwu.gaoning'
+        }
     }
 
     sourceSets {
