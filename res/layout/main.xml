@@ -1,76 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="#F1F1F1">
+             android:layout_height="match_parent">
+
     <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fadingEdge="none"
-            android:scrollbars="none">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
-            <Button
-                    android:id="@+id/button_accessibility"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/btn_red"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="40dp"
-                    android:onClick="onSettingsClicked"
-                    android:text="@string/enable_accessibility"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/white"/>
-            <TextView
-                    android:id="@+id/label_accessible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="4dp"
-                    android:textSize="14sp"/>
-            <View android:layout_width="match_parent" android:layout_height="40dp"/>
-            <Button
-                    android:id="@+id/button_notification"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/btn_red"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="40dp"
-                    android:visibility="gone"
-                    android:onClick="onNotificationEnableButtonClicked"
-                    android:text="@string/enable_notification"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/white"/>
-            <TextView
-                    android:id="@+id/label_notification"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="4dp"
-                    android:visibility="gone"
-                    android:textSize="14sp"/>
-            <TextView
-                    android:id="@+id/version_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="#333"
-                    android:textSize="15sp"/>
-        </LinearLayout>
-    </ScrollView>
-    <TextView
-            android:id="@+id/label_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="12dp"
-            android:textColor="#333"
-            android:textSize="18sp"/>
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <CheckBox
+                android:id="@+id/cb_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="功能开关"/>
+
+            <Button
+                android:id="@+id/button_accessibility"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/btn_red"
+                android:onClick="onSettingsClicked"
+                android:text="@string/enable_accessibility"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/label_accessible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+            <Button
+                android:id="@+id/button_notification"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/btn_red"
+                android:onClick="onNotificationEnableButtonClicked"
+                android:text="@string/enable_notification"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/label_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/version_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:textColor="#333"
+                android:textSize="15sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/label_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="12dp"
+        android:textColor="#333"
+        android:textSize="18sp"/>
 </FrameLayout>
 

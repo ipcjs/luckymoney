@@ -15,6 +15,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -26,6 +28,7 @@ public class MainActivity extends Activity {
     private TextView mAccessibleLabel;
     private TextView mNotificationLabel;
     private TextView mLabelText;
+    private CheckBox mSwitch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,15 @@ public class MainActivity extends Activity {
 
         mAccessibleLabel = (TextView) findViewById(R.id.label_accessible);
         mNotificationLabel = (TextView) findViewById(R.id.label_notification);
+        mSwitch = (CheckBox) findViewById(R.id.cb_switch);
         mLabelText = (TextView) findViewById(R.id.label_text);
+        mSwitch.setChecked(LuckyApplication.getInstance().isEnable());
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                LuckyApplication.getInstance().setEnable(isChecked);
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= 18) {
             mNotificationLabel.setVisibility(View.VISIBLE);
@@ -68,7 +79,6 @@ public class MainActivity extends Activity {
 
         return versionName;
     }
-
 
     @Override
     protected void onResume() {

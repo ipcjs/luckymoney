@@ -18,6 +18,9 @@ public class NotificationService extends NotificationListenerService {
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
+        if (!LuckyApplication.getInstance().isEnable()) {
+            return;
+        }
         Notification notification = sbn.getNotification();
         if (null != notification) {
             Bundle extras = notification.extras;
@@ -28,7 +31,6 @@ public class NotificationService extends NotificationListenerService {
 
                 String detailText = extras.getString("android.text");
                 if (!TextUtils.isEmpty(detailText)) textList.add(detailText);
-
 
                 if (textList.size() > 0) {
                     for (String text : textList) {
