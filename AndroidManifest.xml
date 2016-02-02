@@ -14,8 +14,7 @@
 
     <application android:label="@string/app_name"
                  android:icon="@drawable/ic_lucky"
-                 android:name=".LuckyApplication"
-                 android:theme="@android:style/Theme.NoTitleBar">
+                 android:name=".LuckyApplication">
         <activity android:name="MainActivity"
                   android:label="@string/app_name">
             <intent-filter>

@@ -19,14 +19,6 @@ android {
     lintOptions {
         abortOnError false
     }
-    productFlavors {
-        dashi {
-            applicationId 'com.dashiweiwu.dashi'
-        }
-        gaoning {
-            applicationId 'com.dashiweiwu.gaoning'
-        }
-    }
 
     sourceSets {
         main {

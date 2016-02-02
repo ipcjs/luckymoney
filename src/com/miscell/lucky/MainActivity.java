@@ -2,7 +2,6 @@ package com.miscell.lucky;
 
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.app.Activity;
-import android.app.KeyguardManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,18 +10,11 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -40,29 +32,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        final float density = metrics.density;
-        final int screenWidth = metrics.widthPixels;
-
-        int width = (int) (screenWidth - (density * 12 + .5f) * 2);
-        int height = (int) (366.f * width / 1080);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, height);
-        ImageView imageView1 = (ImageView) findViewById(R.id.image_accessibility);
-        ImageView imageView2 = (ImageView) findViewById(R.id.image_notification);
-
         mAccessibleLabel = (TextView) findViewById(R.id.label_accessible);
         mNotificationLabel = (TextView) findViewById(R.id.label_notification);
         mLabelText = (TextView) findViewById(R.id.label_text);
 
-        imageView1.setLayoutParams(lp);
-        imageView2.setLayoutParams(lp);
-
         if (Build.VERSION.SDK_INT >= 18) {
-            imageView2.setVisibility(View.VISIBLE);
             mNotificationLabel.setVisibility(View.VISIBLE);
             findViewById(R.id.button_notification).setVisibility(View.VISIBLE);
         } else {
-            imageView2.setVisibility(View.GONE);
             mNotificationLabel.setVisibility(View.GONE);
             findViewById(R.id.button_notification).setVisibility(View.GONE);
         }

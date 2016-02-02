@@ -13,11 +13,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="12dp">
-            <ImageView
-                    android:id="@+id/image_accessibility"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/tips1"/>
             <Button
                     android:id="@+id/button_accessibility"
                     android:layout_width="match_parent"
@@ -38,12 +33,6 @@
                     android:layout_marginTop="4dp"
                     android:textSize="14sp"/>
             <View android:layout_width="match_parent" android:layout_height="40dp"/>
-            <ImageView
-                    android:id="@+id/image_notification"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:src="@drawable/tips2"/>
             <Button
                     android:id="@+id/button_notification"
                     android:layout_width="match_parent"
