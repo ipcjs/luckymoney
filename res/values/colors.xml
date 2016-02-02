@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="highlight_color">#66CCCCCC</color>
+    <color name="text_disable">#ffff6555</color>
+    <color name="text_enable">#FF009588</color>
 </resources>

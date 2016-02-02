@@ -16,6 +16,7 @@
             android:padding="12dp">
 
             <CheckBox
+                android:textColor="@color/text_enable"
                 android:id="@+id/cb_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

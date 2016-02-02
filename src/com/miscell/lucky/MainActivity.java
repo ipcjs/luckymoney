@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -22,8 +21,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class MainActivity extends Activity {
-    private static final Intent sSettingsIntent =
-            new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+    private static final Intent sSettingsIntent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
 
     private TextView mAccessibleLabel;
     private TextView mNotificationLabel;
@@ -39,11 +37,12 @@ public class MainActivity extends Activity {
         mNotificationLabel = (TextView) findViewById(R.id.label_notification);
         mSwitch = (CheckBox) findViewById(R.id.cb_switch);
         mLabelText = (TextView) findViewById(R.id.label_text);
-        mSwitch.setChecked(LuckyApplication.getInstance().isEnable());
+        updateGoalSwitchState();
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 LuckyApplication.getInstance().setEnable(isChecked);
+                updateGoalSwitchState();
             }
         });
 
@@ -86,15 +85,27 @@ public class MainActivity extends Activity {
         changeLabelStatus();
     }
 
+    private void updateGoalSwitchState() {
+        boolean enable = LuckyApplication.getInstance().isEnable();
+        mSwitch.setChecked(enable);
+        mSwitch.setTextColor(getTextColor(enable));
+    }
+
+    private int getTextColor(boolean enable) {
+        return getResources().getColor(enable
+                ? R.color.text_enable
+                : R.color.text_disable);
+    }
+
     private void changeLabelStatus() {
         boolean isAccessibilityEnabled = isAccessibleEnabled();
-        mAccessibleLabel.setTextColor(isAccessibilityEnabled ? 0xFF009588 : Color.RED);
+        mAccessibleLabel.setTextColor(getTextColor(isAccessibilityEnabled));
         mAccessibleLabel.setText(isAccessibleEnabled() ? "辅助功能已打开" : "辅助功能未打开");
         mLabelText.setText(isAccessibilityEnabled ? "好了~你可以去做其他事情了，我会自动给你抢红包的" : "请打开开关开始抢红包");
 
         if (Build.VERSION.SDK_INT >= 18) {
             boolean isNotificationEnabled = isNotificationEnabled();
-            mNotificationLabel.setTextColor(isNotificationEnabled ? 0xFF009588 : Color.RED);
+            mNotificationLabel.setTextColor(getTextColor(isNotificationEnabled));
             mNotificationLabel.setText(isNotificationEnabled ? "接收通知已打开" : "接收通知未打开");
 
             if (isAccessibilityEnabled && isNotificationEnabled) {
